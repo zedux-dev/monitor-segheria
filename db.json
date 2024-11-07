@@ -1,0 +1,14 @@
+{
+    "lame": [],
+    "tagli": [
+        {
+            "cliente": "",
+            "lunghezza": 200,
+            "larghezza": 100,
+            "spessore": 200,
+            "diametro": 0,
+            "durata": 2
+        }
+    ],
+    "lama_in_uso": null
+}
