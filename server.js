@@ -41,6 +41,8 @@ io.on('connection', (sock) => {
         let db = fs.readFileSync('db.json', 'utf8');
         db = JSON.parse(db);
 
+        console.error('SOCO cacca', db);
+
         sock.emit('get-db', db);
     });
 

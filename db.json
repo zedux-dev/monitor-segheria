@@ -1,14 +1,81 @@
 {
-    "lame": [],
+    "lame": [
+        {
+            "name": "Vecchia ciabatta",
+            "maxOre": "10",
+            "maxMetri": "10",
+            "ore": 8.066666666,
+            "metri": 688,
+            "parziale": 0,
+            "ultimaAffilatura": "8 novembre 2024"
+        },
+        {
+            "name": "dwqLuigia",
+            "maxOre": "20",
+            "maxMetri": "30",
+            "ore": 8.1,
+            "metri": 30,
+            "parziale": 0,
+            "ultimaAffilatura": null
+        }
+    ],
     "tagli": [
         {
             "cliente": "",
-            "lunghezza": 200,
-            "larghezza": 100,
-            "spessore": 200,
-            "diametro": 0,
-            "durata": 2
+            "lunghezza": "1110",
+            "larghezza": 0,
+            "spessore": 0,
+            "durata": 120
+        },
+        {
+            "cliente": "",
+            "lunghezza": "1110",
+            "larghezza": 0,
+            "spessore": 0,
+            "durata": 120
+        },
+        {
+            "cliente": "",
+            "lunghezza": "1110",
+            "larghezza": 0,
+            "spessore": 0,
+            "durata": 120
+        },
+        {
+            "cliente": "",
+            "lunghezza": "1110",
+            "larghezza": 0,
+            "spessore": 0,
+            "durata": 120
+        },
+        {
+            "cliente": "",
+            "lunghezza": 0,
+            "larghezza": 0,
+            "spessore": 0,
+            "durata": 120
+        },
+        {
+            "cliente": "",
+            "lunghezza": 0,
+            "larghezza": 0,
+            "spessore": 0,
+            "durata": 120
+        },
+        {
+            "cliente": "",
+            "lunghezza": 0,
+            "larghezza": 0,
+            "spessore": 0,
+            "durata": 120
+        },
+        {
+            "cliente": "",
+            "lunghezza": 0,
+            "larghezza": 0,
+            "spessore": 0,
+            "durata": 120
         }
     ],
-    "lama_in_uso": null
+    "lama_in_uso": 0
 }

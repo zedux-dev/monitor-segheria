@@ -27,7 +27,6 @@
             "center": true,
             "fullScreen": false,
             "alwaysOnTop": false,
-            "icon": "/app_icon.png",
             "enableInspector": true,
             "borderless": false,
             "maximize": false,
@@ -65,6 +64,34 @@
             "initCommand": "npm install",
             "devCommand": "npm run dev",
             "buildCommand": "npm run build"
+        }
+    },
+    "buildScript": {
+        "mac": {
+            "architecture": [
+                "x64",
+                "arm64",
+                "universal"
+            ],
+            "minimumOS": "10.13.0",
+            "appName": "Segheria",
+            "appBundleName": "segheria",
+            "appIdentifier": "com.davidenadin.segheria"
+        },
+        "win": {
+            "architecture": [
+                "x64"
+            ],
+            "appName": "Segheria"
+        },
+        "linux": {
+            "architecture": [
+                "x64",
+                "arm64",
+                "armhf"
+            ],
+            "appName": "Segheria",
+            "appPath": "/usr/share/segheria"
         }
     }
 }
