@@ -34,6 +34,7 @@ export default {
             default: 'dashboard'
         }
     },
+    emits: ['change-tab'],
     data() {
         return {
             tagliato: false

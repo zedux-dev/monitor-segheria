@@ -1,5 +1,7 @@
 <template>
     <div class="dashboard">
+        <div v-if="!enabled" class="blocker">Nessuna lama selezionata!</div>
+        
         <div class="row">
             <div class="field-wrapper small-input">
                 <label>Tagli</label>
@@ -43,7 +45,7 @@
             <div class="field-wrapper">
                 <label>lunghezza</label>
                 <div class="input">
-                    <input type="text" v-model="currentTaglio.lunghezza" @change="currentTaglio.lunghezza = filterComma(currentTaglio.lunghezza)">
+                    <input type="text" v-model="currentTaglio.lunghezza" @input="currentTaglio.lunghezza = filterComma(currentTaglio.lunghezza)">
                     <small>cm</small>
                 </div>
             </div>
@@ -51,8 +53,7 @@
             <div class="field-wrapper">
                 <label>Larghezza</label>
                 <div class="input">
-                    <input type="text" v-model="currentTaglio.larghezza"
-                        @change="currentTaglio.larghezza = filterComma(currentTaglio.larghezza)">
+                    <input type="text" v-model="currentTaglio.larghezza" @input="currentTaglio.larghezza = filterComma(currentTaglio.larghezza)">
                     <small>cm</small>
                 </div>
             </div>
@@ -60,8 +61,7 @@
             <div class="field-wrapper">
                 <label>Spessore</label>
                 <div class="input">
-                    <input type="text" v-model="currentTaglio.spessore"
-                        @change="currentTaglio.spessore = filterComma(currentTaglio.spessore)">
+                    <input type="text" v-model="currentTaglio.spessore" @input="currentTaglio.spessore = filterComma(currentTaglio.spessore)">
                     <small>cm</small>
                 </div>
             </div>
@@ -71,8 +71,7 @@
             <div class="field-wrapper">
                 <label>Diametro tronco</label>
                 <div class="input">
-                    <input type="text" v-model="tronco.diametro"
-                        @change="tronco.diametro = filterComma(tronco.diametro)">
+                    <input type="text" v-model="tronco.diametro" @input="tronco.diametro = filterComma(tronco.diametro)">
                     <small>cm</small>
                 </div>
             </div>
@@ -80,8 +79,7 @@
             <div class="field-wrapper">
                 <label>Lunghezza tronco</label>
                 <div class="input">
-                    <input type="text" v-model="tronco.lunghezza"
-                        @change="tronco.lunghezza = filterComma(tronco.lunghezza)">
+                    <input type="text" v-model="tronco.lunghezza" @input="tronco.lunghezza = filterComma(tronco.lunghezza)">
                     <small>cm</small>
                 </div>
             </div>
@@ -97,7 +95,7 @@
             <div class="field-wrapper">
                 <label>Ratio</label>
                 <div class="input">
-                    <input type="text" :value="parseFloat(ratio).toFixed(2)" class="readonly" readonly>
+                    <input type="text" :value="parseFloat(tronco.ratio).toFixed(2)" class="readonly" readonly>
                 </div>
             </div>
         </div>
@@ -119,31 +117,44 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from 'uuid';
+
 export default {
     name: 'Dashboard',
     props: ['database','socket'],
     data() {
         return {
             tronco: {
+                id: '',
                 volume: 0,
                 diametro: 0,
-                lunghezza: 0
+                lunghezza: 0,
+                ratio: 0,
             },
             volume: 0,
+            volumePartial: 0,
             tagliTotali: 0,
             metriTotali: 0,
             secondiTotali: 0,
-            ratio: 0,
             currentTaglio: {
                 cliente: "",
+                data: "",
                 lunghezza: 0,
                 larghezza: 0,
                 spessore: 0,
-                durata: 0
+                durata: 0,
+                tronco: null
             }
         }
     },
     computed: {
+        enabled() {
+            if(this.database) {
+                return this.database.lama_in_uso > -1;
+            }
+
+            return true;
+        },
         timeClock() {
             let sec_num = parseInt(this.secondiTotali, 10);
             let hours = Math.floor(sec_num / 3600);
@@ -159,34 +170,81 @@ export default {
     },
     methods: {
         newTaglio(secondi) {
-            this.currentTaglio.durata = secondi;
-            this.secondiTotali += secondi;
+            if(this.enabled) {
+                let cliente = this.currentTaglio.cliente;
+                if(this.currentTaglio.cliente == "") cliente = "Sconosciuto";
 
-            // metri tagliati in metri
-            this.metriTotali += parseFloat(this.currentTaglio.lunghezza) / 100;
+                if(this.database.tagli[cliente] == undefined) this.database.tagli[cliente] = {};
+                
+                let now = new Date();
+                let formattedDate = now.getDate() + "/" + (now.getMonth() + 1) + "/" + now.getFullYear();
 
-            // volum tagliato in metri cubi
-            this.volume += (parseFloat(this.currentTaglio.lunghezza) * parseFloat(this.currentTaglio.larghezza) * parseFloat(this.currentTaglio.spessore)) / 1000000;
+                if(this.database.tagli[cliente][formattedDate] == undefined) this.database.tagli[cliente][formattedDate] = {
+                    tronchi: {},
+                    volume: 0,
+                    metri: 0,
+                    ore: 0
+                };
 
-            // tagli totali
-            this.tagliTotali++;
+                if(this.database.tagli[cliente][formattedDate].tronchi[this.tronco.id] == undefined) this.database.tagli[cliente][formattedDate].tronchi[this.tronco.id] = {
+                    diametro: 0,
+                    lunghezza: 0,
+                    volume: 0,
+                    ratio: 0,
+                    tagli: []
+                };
 
-            this.database.tagli.push(this.currentTaglio);
-            this.socket.emit('save-db', this.database);
+                this.currentTaglio.durata = secondi;
+                this.secondiTotali += secondi;
 
-            this.currentTaglio.durata = 0;
+                this.database.tagli[cliente][formattedDate].ore = parseFloat(parseFloat(this.secondiTotali / 3600).toFixed(2));
 
-            this.ratio = parseFloat(this.volume).toFixed(2) / parseFloat(this.tronco.volume).toFixed(2);
+                // metri tagliati in metri
+                this.metriTotali += parseFloat(this.currentTaglio.lunghezza) / 100;
+                this.database.tagli[cliente][formattedDate].metri = this.metriTotali;
 
-            if(this.database.lama_in_uso > -1) {
-                this.database.lame[this.database.lama_in_uso].metri += parseFloat(this.currentTaglio.lunghezza) / 100;
-                this.database.lame[this.database.lama_in_uso].ore += secondi / 3600;
-                this.database.lame[this.database.lama_in_uso].parziale += parseFloat(this.currentTaglio.lunghezza) / 100;
+                // volum tagliato in metri cubi
+                let vol = (parseFloat(this.currentTaglio.lunghezza) * parseFloat(this.currentTaglio.larghezza) * parseFloat(this.currentTaglio.spessore)) / 1000000;
+                this.volume += vol;
+                this.volumePartial += vol;
+
+                this.database.tagli[cliente][formattedDate].volume = parseFloat(parseFloat(this.volume).toFixed(2));
+
+                // tagli totali
+                this.tagliTotali++;
+
+                this.currentTaglio.tronco = { ...this.tronco };
+
+                this.currentTaglio.data = now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear();
+
+                this.tronco.ratio = parseFloat(this.volumePartial).toFixed(2) / parseFloat(this.tronco.volume).toFixed(2);
+
+                if(this.database.lama_in_uso > -1) {
+                    this.database.lame[this.database.lama_in_uso].metri += parseFloat(this.currentTaglio.lunghezza) / 100;
+                    this.database.lame[this.database.lama_in_uso].ore += secondi / 3600;
+                    this.database.lame[this.database.lama_in_uso].parziale += parseFloat(this.currentTaglio.lunghezza) / 100;
+                }
+
+                this.database.tagli[cliente][formattedDate].tronchi[this.tronco.id].diametro = parseFloat(parseFloat(this.tronco.diametro).toFixed(2));
+                this.database.tagli[cliente][formattedDate].tronchi[this.tronco.id].lunghezza = parseFloat(parseFloat(this.tronco.lunghezza).toFixed(2));
+                this.database.tagli[cliente][formattedDate].tronchi[this.tronco.id].volume = parseFloat(parseFloat(this.tronco.volume).toFixed(2));
+
+                if(this.tronco.ratio > this.database.tagli[cliente][formattedDate].tronchi[this.tronco.id].ratio) {
+                    this.database.tagli[cliente][formattedDate].tronchi[this.tronco.id].ratio = parseFloat(parseFloat(this.tronco.ratio).toFixed(2));
+                }
+
+                this.database.tagli[cliente][formattedDate].tronchi[this.tronco.id].tagli.push({
+                    lunghezza: parseFloat(parseFloat(this.currentTaglio.lunghezza).toFixed(2)),
+                    larghezza: parseFloat(parseFloat(this.currentTaglio.larghezza).toFixed(2)),
+                    spessore: parseFloat(parseFloat(this.currentTaglio.spessore).toFixed(2)),
+                    durata: this.currentTaglio.durata
+                });
+
+                this.currentTaglio.durata = 0;
+
+                this.socket.emit('save-db', this.database);
+                this.$emit('taglio');
             }
-            
-            this.socket.emit('db-sabe', this.database);
-
-            this.$emit('taglio');
         },
         filterNumbers(string) {
             if (string == "") string = "0";
@@ -210,8 +268,6 @@ export default {
                 let raggio = parseFloat(this.tronco.diametro) / 2;
                 let superficeCerchio = Math.PI * Math.pow(raggio, 2);
                 this.tronco.volume = (superficeCerchio * this.tronco.lunghezza) / 1000000;
-
-                this.ratio = parseFloat(this.volume).toFixed(2) / parseFloat(this.tronco.volume).toFixed(2);
             }
         },
         azzeraTaglio() {
@@ -219,13 +275,16 @@ export default {
             this.currentTaglio.spessore = 0;
         },
         cambioTronco() {
+            this.tronco.id = uuidv4();
             this.tronco.volume = 0;
             this.tronco.diametro = 0;
             this.tronco.lunghezza = 0;
             this.tronco.ratio = 0;
+            this.volumePartial = 0;
         }
     },
     mounted() {
+        this.tronco.id = uuidv4();
     },
     watch: {
         'currentTaglio.lunghezza'(nv) {
@@ -251,9 +310,27 @@ export default {
 
 <style scoped>
 .dashboard {
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 10px 30px;
+    height: calc(100vh - 125px);
+}
+
+.blocker {
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
 }
 
 .field-wrapper.small-input {
@@ -280,6 +357,7 @@ export default {
     border: 1px solid #ccc;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     border-radius: 4px;
+    background-color: white;
 }
 
 .field-wrapper>.input:has(input:focus) {

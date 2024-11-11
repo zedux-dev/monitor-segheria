@@ -1,10 +1,10 @@
-<template>
+<template>    
     <navbar ref="navbar" :online="online" :tabPage="tab" @change-tab="changeTab($event)" />
 
     <div class="content">
         <Dashboard v-if="tab == 'dashboard'" ref="dashboard" :socket="socket" :database="database" @taglio="updateLama" />
         <GestioneLame v-if="tab == 'lame'" ref="gestoreLame" :socket="socket" :database="database" />
-        <ExportExcel v-if="tab == 'excel'" />
+        <ExportExcel v-if="tab == 'excel'" :database="database" />
     </div>
 
     <SelettoreLame v-if="tab == 'dashboard'" ref="selettoreLame" :socket="socket" :database="database" />
@@ -78,8 +78,8 @@ export default {
         },
         updateLama() {
             this.$refs.navbar.taglio();
-            this.$refs.gestoreLame.loadLame();
-            this.$refs.selettoreLame.loadLame();
+            if(this.$refs.gestoreLame) this.$refs.gestoreLame.loadLame();
+            if(this.$refs.selettoreLame) this.$refs.selettoreLame.loadLame();
         }
     },
     mounted() {
@@ -119,5 +119,6 @@ export default {
     flex-direction: column;
     flex: 1;
     padding-top: 40px;
+    background-color: rgb(247, 247, 247);
 }
 </style>

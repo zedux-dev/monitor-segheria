@@ -1,12 +1,19 @@
 <template>
     <div class="colonna main">
         <div class="riga">
-            <div class="lista-lame">
-                <div v-for="(lama, i) in lame" :class="inEdit == i ? 'active' : ''" @click="editLamaSet(i)">{{ lama.name }}</div>
+            <div class="colonna">
+                <h3 style="margin-top: 4px; margin-left: 4px; margin-bottom: 12px;">Lista lame</h3>
+
+                <div class="lista-lame">
+                    <p v-if="lame.length == 0" style="opacity: 0.5; font-size: 13px; margin: 20px auto;">Nessuna lama...</p>
+                    <div v-for="(lama, i) in lame" :class="inEdit == i ? 'active' : ''" @click="editLamaSet(i)">{{ lama.name }}</div>
+                </div>
             </div>
 
             <div class="colonna">
                 <div v-if="inEdit > -1 && tmp" class="editor">
+                    <button class="close-x" @click="cancel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg></button>
+                    
                     <h3>Modifica lama</h3>
 
                     <div class="field-wrapper">
@@ -45,6 +52,8 @@
                 </div>
 
                 <div v-if="inEdit == -1 && tmp" class="editor">
+                    <button class="close-x" @click="cancel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg></button>
+
                     <h3>Nuova lama</h3>
 
                     <div class="field-wrapper">
@@ -119,10 +128,8 @@ export default {
             }
         },
         editLamaSet(i) {
-            console.error('SOCO', this.inEdit);
             this.inEdit = i;
-            this.tmp = this.database.lame[i];
-            console.error('SOCO', this.tmp);
+            this.tmp = { ...this.database.lame[i] };
         },
         filterNumbers(string) {
             if (string == "") string = "0";
@@ -143,22 +150,24 @@ export default {
         save() {
             if(this.inEdit > -1) {
                 this.database.lame[this.inEdit] = this.tmp;
-                console.error('SOCO', this.inEdit);
-                console.error('SOCO', this.database.lame[this.inEdit]);
                 this.tmp = null;
                 this.inEdit = -1;
             } else {
-                this.database.lame.push(this.tmp);
+                this.database.lame.push({ ...this.tmp });
                 this.tmp = null;
                 this.inEdit = -1;
             }
             this.socket.emit('save-db', this.database);
         },
         remove() {
-            this.database.splice(this.inEdit, 1);
+            this.database.lame.splice(this.inEdit, 1);
             this.inEdit = -1;
             this.tmp = null;
             this.socket.emit('save-db', this.database);
+        },
+        cancel() {
+            this.inEdit = -1;
+            this.tmp = null;
         }
     },
     mounted() {
@@ -181,9 +190,11 @@ export default {
     flex-direction: column;
     border-radius: 4px;
     box-shadow: 0 1px 4px rgba(0,0,0,.065);
+    background-color: white;
     border: 1px solid rgb(223, 223, 223);
     width: 200px;
     overflow: hidden;
+    height: fit-content;
 }
 
 .lista-lame > div {
@@ -205,7 +216,7 @@ export default {
 }
 
 .lista-lame > div:hover {
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(247, 247, 247);
 }
 
 .riga {
@@ -225,9 +236,11 @@ export default {
 }
 
 .editor {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 200px;
+    background-color: white;
     box-shadow: 0 1px 4px rgba(0,0,0,.065);
     border: 1px solid rgb(223, 223, 223);
     border-radius: 4px;
@@ -235,7 +248,27 @@ export default {
     margin-left: 50px;
 }
 
-.editor > h3 {
+.close-x {
+    position: absolute;
+    top: 4px;
+    right: 3px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    padding: 0;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-x > svg {
+    width: 25px;
+    height: 25px;
+    fill: #de3636;
+}
+
+h3 {
     font-size: 16px;
     color: #0088cc;
     font-weight: 500;
