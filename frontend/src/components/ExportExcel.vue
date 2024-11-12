@@ -24,17 +24,50 @@ export default {
         async exportExcel() {
             if(!this.dialog && this.database) {                
                 let clienti = Object.keys(this.database.tagli);
-                let sheetsName = [];
-                let sheets = [];
+                let sheetsName = ['Lame'];
+                
+                let lame_rows = [[
+                    { type: String, value: "Nome", backgroundColor: this.headerBackground, color: this.headerColor },
+                    { type: String, value: "Ore max.", backgroundColor: this.headerBackground, color: this.headerColor },
+                    { type: String, value: "Metri max.", backgroundColor: this.headerBackground, color: this.headerColor },
+                    { type: String, value: "Ore", backgroundColor: this.headerBackground, color: this.headerColor },
+                    { type: String, value: "Metri", backgroundColor: this.headerBackground, color: this.headerColor },
+                    { type: String, value: "Ultima aff.", backgroundColor: this.headerBackground, color: this.headerColor }
+                ]];
+                
+                this.database.lame.forEach(lama => {
+                    let lr = [
+                        { type: String, value: lama.name },
+                        { type: String, value: parseFloat(lama.maxOre).toFixed(2) },
+                        { type: String, value: parseFloat(lama.maxMetri).toFixed(2) },
+                        { type: String, value: parseFloat(lama.ore).toFixed(2) },
+                        { type: String, value: parseFloat(lama.metri).toFixed(2) },
+                        { type: String, value: lama.ultimaAffilatura ?  lama.ultimaAffilatura : '-' }
+                    ];
+
+                    lame_rows.push(lr);
+                });
+
+                let sheets = [lame_rows];
+                let penis = new Date("2024-07-10");
+                let penis2 = new Date("2024-11-12");
 
                 clienti.forEach(async (client_key) => {
-                    sheetsName.push(client_key);
+                    let validSheet = false;
 
                     let rows = [];
 
                     let date = Object.keys(this.database.tagli[client_key]);
 
-                    date.forEach(date_key => {
+                    let filteredDates = date.filter(d => {
+                        let pts = d.split("/");
+                        let dd = new Date(pts[2] + "-" + pts[1] + "-" + pts[0]);
+                        return dd >= penis && dd <= penis2;
+                    });
+
+                    if(filteredDates.length == 0) validSheet = false;
+
+                    filteredDates.forEach(date_key => {
                         rows.push([
                             { type: String, value: date_key, backgroundColor: this.headerBackground, color: this.headerColor }
                         ]);
@@ -100,12 +133,16 @@ export default {
                         rows.push([]);
                     });
 
-                    sheets.push(rows);
+                    if(validSheet) {
+                        sheets.push(rows);
+                        sheetsName.push(client_key);
+                    }
                 });
 
                 const blob = await writeXlsxFile(sheets, {
                     sheets: sheetsName
                 });
+
                 let blobBuffer = await blob.arrayBuffer();
                 const buffer = Buffer.from(blobBuffer, 'binary');
 

@@ -177,7 +177,7 @@ export default {
                 if(this.database.tagli[cliente] == undefined) this.database.tagli[cliente] = {};
                 
                 let now = new Date();
-                let formattedDate = now.getDate() + "/" + (now.getMonth() + 1) + "/" + now.getFullYear();
+                let formattedDate = parseFloat(now.getDate()).toFixed(2) + "/" + parseFloat((now.getMonth() + 1)).toFixed(2) + "/" + now.getFullYear();
 
                 if(this.database.tagli[cliente][formattedDate] == undefined) this.database.tagli[cliente][formattedDate] = {
                     tronchi: {},
