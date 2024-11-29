@@ -1,212 +1,521 @@
 {
     "lame": [
         {
-            "name": "qwd",
-            "maxOre": "1",
-            "maxMetri": "1",
-            "ore": 7.066666666666651,
-            "metri": 4118.02,
-            "parziale": 4118.02,
-            "ultimaAffilatura": null
+            "name": "Vecchia ciabatta",
+            "maxOre": "65",
+            "maxMetri": "12",
+            "ore": 0.03666666666666667,
+            "metri": 66.84999999999997,
+            "parziale": 41.85000000000001,
+            "ultimaAffilatura": "29 novembre 2024"
         }
     ],
     "tagli": {
-        "Claudio": {
-            "11/11/2020": {
+        "Andrea": {
+            "29/11/2024": {
                 "tronchi": {
-                    "b97b93e7-a4ae-4e41-8876-e183964a8169": {
-                        "diametro": 30,
-                        "lunghezza": 8600,
-                        "volume": 6.08,
-                        "ratio": 0.91,
+                    "ff2c71a2-d216-4bdf-a6ad-97f4c9c80651": {
+                        "diametro": 100,
+                        "lunghezza": 100,
+                        "volume": 0.79,
+                        "ratio": 0.95,
                         "tagli": [
                             {
-                                "lunghezza": 2000,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 2000,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 2000,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 2000,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 2000,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
-                            },
-                            {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
-                            },
-                            {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
-                            },
-                            {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
-                            },
-                            {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
-                            },
-                            {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
-                            },
-                            {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             }
                         ]
                     },
-                    "73b67c72-b247-4019-8e09-28f33e7e3dda": {
-                        "diametro": 32,
-                        "lunghezza": 6025,
-                        "volume": 4.85,
-                        "ratio": 1.04,
+                    "a327a1b5-4ac3-4f9d-8d55-946d5f3c35cd": {
+                        "diametro": 120,
+                        "lunghezza": 120,
+                        "volume": 1.36,
+                        "ratio": 0.92,
                         "tagli": [
                             {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 3500,
-                                "larghezza": 20,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            }
+                        ]
+                    },
+                    "6d0f7db5-90a6-42ea-8b3b-015adb33e16b": {
+                        "diametro": 120,
+                        "lunghezza": 500,
+                        "volume": 5.65,
+                        "ratio": 1.26,
+                        "tagli": [
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 150,
+                                "larghezza": 150,
+                                "spessore": 150,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 150,
+                                "larghezza": 150,
+                                "spessore": 150,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 150,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 150,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 150,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 150,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            }
+                        ]
+                    },
+                    "55f904a8-a9df-45b1-84d9-c0aad12d7ce1": {
+                        "diametro": 100,
+                        "lunghezza": 100,
+                        "volume": 0.79,
+                        "ratio": 0.32,
+                        "tagli": [
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             }
                         ]
                     }
                 },
-                "volume": 10.56,
-                "metri": 660,
-                "ore": 0.7
+                "volume": 9.38,
+                "metri": 19.5,
+                "ore": 0.47
             }
         },
-        "Piero": {
-            "11/11/2025": {
+        "Claudio": {
+            "29/11/2024": {
                 "tronchi": {
-                    "73b67c72-b247-4019-8e09-28f33e7e3dda": {
-                        "diametro": 45,
-                        "lunghezza": 6025,
-                        "volume": 9.58,
-                        "ratio": 0.85,
+                    "55f904a8-a9df-45b1-84d9-c0aad12d7ce1": {
+                        "diametro": 100,
+                        "lunghezza": 100,
+                        "volume": 0.79,
+                        "ratio": 0.95,
                         "tagli": [
                             {
-                                "lunghezza": 2500,
-                                "larghezza": 31,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 2500,
-                                "larghezza": 31,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 2500,
-                                "larghezza": 31,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 2500,
-                                "larghezza": 31,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            }
+                        ]
+                    },
+                    "f6543907-13a0-4a71-ae92-dcbded12f731": {
+                        "diametro": 200,
+                        "lunghezza": 200,
+                        "volume": 6.28,
+                        "ratio": 0.18,
+                        "tagli": [
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             },
                             {
-                                "lunghezza": 2500,
-                                "larghezza": 31,
-                                "spessore": 8,
-                                "durata": 120
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 50,
+                                "larghezza": 50,
+                                "spessore": 50,
+                                "durata": 66
                             }
                         ]
                     }
                 },
-                "volume": 13.66,
-                "metri": 785,
-                "ore": 0.87
+                "volume": 11,
+                "metri": 26,
+                "ore": 594
+            }
+        },
+        "Senza nome": {
+            "29/11/2024": {
+                "tronchi": {
+                    "ce09ed0b-b8cc-4983-83ab-80e1b0bb61d9": {
+                        "diametro": 0,
+                        "lunghezza": 0,
+                        "volume": 0,
+                        "ratio": 0,
+                        "tagli": [
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            }
+                        ]
+                    },
+                    "5379d541-3579-439c-b5d7-345fdfaf5e1b": {
+                        "diametro": 0,
+                        "lunghezza": 0,
+                        "volume": 0,
+                        "ratio": 0,
+                        "tagli": [
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            }
+                        ]
+                    },
+                    "2bbb4d7f-e31c-42e8-8079-ecf0cf2134c9": {
+                        "diametro": 0,
+                        "lunghezza": 0,
+                        "volume": 0,
+                        "ratio": 0,
+                        "tagli": [
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            }
+                        ]
+                    },
+                    "9595e8ba-f686-4926-a87b-baf6a74882fe": {
+                        "diametro": 0,
+                        "lunghezza": 0,
+                        "volume": 0,
+                        "ratio": 0,
+                        "tagli": [
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            }
+                        ]
+                    },
+                    "8caea818-d210-486d-a1e7-b64988b1b452": {
+                        "diametro": 0,
+                        "lunghezza": 0,
+                        "volume": 0,
+                        "ratio": 0,
+                        "tagli": [
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            }
+                        ]
+                    },
+                    "4722247c-e02b-4c21-b3b4-b14584ffb2c2": {
+                        "diametro": 0,
+                        "lunghezza": 0,
+                        "volume": 0,
+                        "ratio": 0,
+                        "tagli": [
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            },
+                            {
+                                "lunghezza": 0,
+                                "larghezza": 0,
+                                "spessore": 0,
+                                "durata": 66
+                            }
+                        ]
+                    }
+                },
+                "volume": 0,
+                "metri": 0,
+                "ore": 0.44
             }
         }
     },
